@@ -19,7 +19,7 @@ namespace Proyecto_Load_planner
 
             //creacion del inventario como array
             //Valores a modificar 
-            Objeto[,] inventario = new Objeto[3,4]{{BC, BC, C3, vacio}, {C1, B, BP, S}, {C2, B, BP, S}};
+            Objeto[,] inventario = new Objeto[3,4]{{vacio, BC, C3, vacio}, {C1, B, BP, S}, {C2, B, BP, S}};
             //{vacio, BC, C3, vacio}
             //{C1, B, BP, S}
             //{C2, B, BP, S}
@@ -31,7 +31,7 @@ namespace Proyecto_Load_planner
             {
                  for (int j = 0; j < CoordenadaY; j++)
                  {
-                     Console.Write(string.Format("{0} ", inventario[i, j].peso));
+                     Console.Write(string.Format("{0} ", inventario[i, j].nombre));
                  }
             Console.Write(Environment.NewLine + Environment.NewLine);
             }
@@ -66,6 +66,21 @@ namespace Proyecto_Load_planner
             else if (inventario[1,3].peso > inventario[2,3].peso)
             {
                 Console.WriteLine(inventario[2,3].nombre + "Esta aplastado/a");
+            }
+            else if (inventario[0,1].peso + inventario[1,1].peso > inventario[2,1].peso || inventario[0,2].peso + inventario[1,2].peso > inventario[2,2].peso)
+            {
+                if (inventario[1,1].peso == inventario[2,1].peso)
+                {
+                    Console.WriteLine("Todo esta en orden");
+                }
+                else if (inventario[1,2].peso == inventario[2,2].peso)
+                {
+                    Console.WriteLine("Todo esta en orden");
+                }
+                else 
+                {
+                    Console.WriteLine(inventario[2,1].nombre + "y/o" + inventario[2,2].nombre + "esta aplastado");
+                }
             }
             else
             {
